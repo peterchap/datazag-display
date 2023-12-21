@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import TopBar from './TopBar';
+import InfoBox from './InfoBox';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    const data = {
+        Domain: "datazag.com",
+        //... (the rest of your data)
+    };
+    const domainInfo = {
+        Domain: data.Domain,
+        A: data.A,
+        NS: data.NS,
+        CNAME: data.CNAME,
+        'Create Date': data['Create Date']
+    };
+    const emailInfo = {
+        MX: data.MX,
+        SPF: data.SPF,
+        Mail: data.Mail
+    };
+    // similarly, you can extract other sections...
 
+    return (
+        <div>
+            <TopBar />
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <InfoBox title="Domain Info" data={domainInfo} />
+                <InfoBox title="Email Info" data={emailInfo} />
+                {/* other sections */}
+            </div>
+        </div>
+    );
+}
 export default App;
+
